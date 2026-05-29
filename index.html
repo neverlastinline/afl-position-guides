@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFL Masters Position Guides</title>
+<style>
+  :root{
+    --grass:#2f7d3a;
+    --grass2:#36893f;
+    --line:rgba(255,255,255,.85);
+    --ink:#16241a;
+    --accent:#b00710;
+    --paper:#fbfaf7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:#11331a;color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    text-align:center;padding:28px 20px 8px;
+  }
+  header h1{
+    margin:0;font-size:clamp(22px,5vw,32px);letter-spacing:-.01em;
+  }
+  header p{margin:8px 0 0;color:#bfe2c5;font-size:15px;}
+  .field-wrap{
+    max-width:560px;margin:8px auto 40px;padding:0 16px;
+    position:relative;
+  }
+  .field{
+    position:relative;width:100%;aspect-ratio:2/3;
+  }
+  .field svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  .pos{
+    position:absolute;transform:translate(-50%,-50%);
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    background:none;border:none;cursor:pointer;padding:0;
+    color:#fff;font-family:inherit;
+  }
+  .pos .dot{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--paper);color:var(--ink);
+    border:2px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:12px;letter-spacing:.02em;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
+    transition:transform .12s ease, background .12s ease, color .12s ease;
+  }
+  .pos .lbl{
+    font-size:10px;line-height:1.1;text-align:center;max-width:74px;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);opacity:.95;
+  }
+  .pos:hover .dot, .pos:focus-visible .dot{
+    transform:scale(1.15);background:var(--accent);color:#fff;
+  }
+  /* Modal */
+  .overlay{
+    position:fixed;inset:0;background:rgba(8,18,11,.72);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:24px 16px;overflow-y:auto;z-index:50;
+  }
+  .overlay.open{display:flex;}
+  .sheet{
+    background:var(--paper);color:#1a1a1a;border-radius:14px;
+    max-width:680px;width:100%;margin:auto;
+    box-shadow:0 24px 60px rgba(0,0,0,.4);
+    overflow:hidden;
+  }
+  .sheet-head{
+    position:sticky;top:0;background:var(--ink);color:#fff;
+    padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .sheet-head h2{margin:0;font-size:20px;letter-spacing:-.01em;}
+  .sheet-head .close{
+    background:rgba(255,255,255,.14);border:none;color:#fff;
+    width:34px;height:34px;border-radius:50%;font-size:20px;cursor:pointer;line-height:1;
+  }
+  .sheet-head .close:hover{background:rgba(255,255,255,.28);}
+  .sheet-body{padding:8px 26px 34px;}
+  .sheet-body h3{
+    font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--accent);margin:26px 0 8px;border-bottom:1px solid #e6e2d8;padding-bottom:5px;
+  }
+  .sheet-body h4{font-size:16px;margin:16px 0 2px;}
+  .sheet-body p{margin:0 0 10px;font-size:16px;line-height:1.55;}
+  .sheet-body ul{margin:0 0 12px;padding-left:20px;}
+  .sheet-body li{margin:0 0 7px;font-size:15px;line-height:1.5;}
+  .hint{color:#bfe2c5;font-size:13px;text-align:center;margin:0 0 18px;}
+  footer{text-align:center;padding:8px 20px 36px;color:#9cc4a4;font-size:13px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>AFL Masters Position Guides</h1>
+  <p>Tap a position on the ground to open its development guide.</p>
+</header>
+
+<div class="field-wrap">
+  <p class="hint">Over-35s &middot; new to the role &middot; injury-aware</p>
+  <div class="field" id="field">
+    <svg viewBox="0 0 200 300" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#36893f"/>
+          <stop offset="1" stop-color="#2c7635"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="200" height="300" fill="#11331a"/>
+      <ellipse cx="100" cy="150" rx="96" ry="146" fill="url(#g)" stroke="rgba(255,255,255,.85)" stroke-width="2"/>
+      <!-- centre square -->
+      <rect x="76" y="126" width="48" height="48" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+      <!-- centre circle -->
+      <circle cx="100" cy="150" r="11" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+      <line x1="100" y1="143" x2="100" y2="157" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+      <!-- top goal square -->
+      <rect x="86" y="4" width="28" height="16" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+      <!-- bottom goal square -->
+      <rect x="86" y="280" width="28" height="16" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+      <!-- 50m arcs -->
+      <path d="M 36 60 A 70 70 0 0 0 164 60" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+      <path d="M 36 240 A 70 70 0 0 1 164 240" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+    </svg>
+  </div>
+</div>
+
+<footer>Built with Claude Code &middot; AFL Masters Coaching</footer>
+
+<div class="overlay" id="overlay">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head">
+      <h2 id="sheetTitle">Position</h2>
+      <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+// Position markers. "id" is the guide filename in guides/<id>.md
+// To add a new position: drop guides/<id>.md in the folder, add a marker here, resync + redeploy.
+const MARKERS = [
+  {id:"full-forward",       ab:"FF",  lbl:"Full Forward",        x:50, y:7},
+  {id:"forward-pocket",     ab:"FP",  lbl:"Forward Pocket",      x:30, y:11},
+  {id:"forward-pocket",     ab:"FP",  lbl:"Forward Pocket",      x:70, y:11},
+  {id:"centre-half-forward",ab:"CHF", lbl:"Centre Half Fwd",     x:50, y:22},
+  {id:"half-forward-flank", ab:"HFF", lbl:"Half Fwd Flank",      x:23, y:25},
+  {id:"half-forward-flank", ab:"HFF", lbl:"Half Fwd Flank",      x:77, y:25},
+  {id:"ruck",               ab:"R",   lbl:"Ruck",                x:50, y:41},
+  {id:"wing",               ab:"W",   lbl:"Wing",                x:15, y:47},
+  {id:"wing",               ab:"W",   lbl:"Wing",                x:85, y:47},
+  {id:"centre",             ab:"C",   lbl:"Centre",              x:50, y:50},
+  {id:"ruck-rover",         ab:"RR",  lbl:"Ruck Rover",          x:39, y:56},
+  {id:"rover",              ab:"Ro",  lbl:"Rover",               x:61, y:56},
+  {id:"centre-half-back",   ab:"CHB", lbl:"Centre Half Back",    x:50, y:78},
+  {id:"half-back-flank",    ab:"HBF", lbl:"Half Back Flank",     x:23, y:75},
+  {id:"half-back-flank",    ab:"HBF", lbl:"Half Back Flank",     x:77, y:75},
+  {id:"full-back",          ab:"FB",  lbl:"Full Back",           x:50, y:93},
+  {id:"back-pocket",        ab:"BP",  lbl:"Back Pocket",         x:30, y:89},
+  {id:"back-pocket",        ab:"BP",  lbl:"Back Pocket",         x:70, y:89}
+];
+
+// Minimal Markdown -> HTML for the guide format we save.
+function esc(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function inline(s){
+  return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+}
+function mdToHtml(md){
+  const lines = md.split('\n');
+  let html = '', title = '', inList = false;
+  const closeList = () => { if(inList){ html += '</ul>'; inList = false; } };
+  for(const raw of lines){
+    const line = raw.replace(/\s+$/,'');
+    if(line.startsWith('# ')){ title = line.slice(2).replace(/\s*[—-]\s*AFL Masters.*$/i,'').trim(); continue; }
+    if(line.startsWith('### ')){ closeList(); html += '<h4>'+inline(line.slice(4))+'</h4>'; continue; }
+    if(line.startsWith('## ')){ closeList(); html += '<h3>'+inline(line.slice(3))+'</h3>'; continue; }
+    if(line.startsWith('- ')){ if(!inList){ html += '<ul>'; inList = true; } html += '<li>'+inline(line.slice(2))+'</li>'; continue; }
+    if(line === ''){ closeList(); continue; }
+    closeList();
+    html += '<p>'+inline(line)+'</p>';
+  }
+  closeList();
+  return { title, html };
+}
+
+// Build markers
+const field = document.getElementById('field');
+MARKERS.forEach(m=>{
+  const b=document.createElement('button');
+  b.className='pos';
+  b.style.left=m.x+'%';
+  b.style.top=m.y+'%';
+  b.setAttribute('aria-label', m.lbl);
+  b.innerHTML=`<span class="dot">${m.ab}</span><span class="lbl">${m.lbl}</span>`;
+  b.addEventListener('click',()=>openGuide(m.id, m.lbl));
+  field.appendChild(b);
+});
+
+// Modal
+const overlay=document.getElementById('overlay');
+const sheetTitle=document.getElementById('sheetTitle');
+const sheetBody=document.getElementById('sheetBody');
+const cache={};
+
+async function openGuide(id, fallbackTitle){
+  overlay.classList.add('open');
+  overlay.scrollTop=0;
+  document.body.style.overflow='hidden';
+  sheetTitle.textContent = fallbackTitle || 'Loading…';
+  sheetBody.innerHTML = '<p>Loading…</p>';
+  try{
+    if(!cache[id]){
+      const res = await fetch('guides/'+id+'.md', {cache:'no-cache'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      cache[id] = mdToHtml(await res.text());
+    }
+    sheetTitle.textContent = cache[id].title || fallbackTitle || 'Guide';
+    sheetBody.innerHTML = cache[id].html;
+  }catch(e){
+    sheetTitle.textContent = 'Guide unavailable';
+    sheetBody.innerHTML = '<p>Sorry, this guide could not be loaded right now.</p>';
+  }
+}
+function closeGuide(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('closeBtn').addEventListener('click',closeGuide);
+overlay.addEventListener('click',e=>{ if(e.target===overlay) closeGuide(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeGuide(); });
+</script>
+</body>
+</html>
