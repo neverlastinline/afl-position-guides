@@ -2,7 +2,7 @@
 
 An interactive web app that helps AFL Masters players (over-35s) learn a new position. The home screen is an Australian Football oval with every position marked; tap a position and its full development guide opens in an overlay.
 
-**Live demo:** https://afl-masters.vercel.app
+**Live demo:** https://afl-positions.vercel.app
 
 ## What it does
 
